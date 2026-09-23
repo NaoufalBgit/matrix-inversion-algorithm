@@ -1,0 +1,5 @@
+Pour compiler : " make ".
+Pour éxecuter : " make run ".
+Vous aurez besoin du fichier " matrice.txt ". Vous veillerez à ce qu'il soit dans le même répertoire que le fichier " inverse_de_matrice.c ".
+C'est à partir de ce fichier que notre programme récupère la taille de la matrice A ainsi que les éléments de la matrice A.
+Vous pourrez modifier le fichier " matrice.txt " à votre guise en sachant que l'on renseigne la taille de la matrice à la première ligne et les éléments de la matrice A à partir de la deuxième ligne en veillant à laisser un espace entre chaque terme de la matrice. (vous trouverez un exemple d'une matrice de taille 8 dans le fichier).
