@@ -11,13 +11,13 @@ make
 make run
 ```
 
-Le programme a besoin du fichier `matrice.txt`, placé **dans le même répertoire que `inverse_de_matrice.c`**. Il y lit la taille de la matrice $A$, puis ses coefficients.
+Le programme a besoin du fichier `matrice.txt`, placé **dans le même répertoire que `inverse_de_matrice.c`**. Il y lit la taille de la matrice A, puis ses coefficients.
 
 ## Format de `matrice.txt`
 
-La **première ligne** contient la taille $n$ de la matrice. Les lignes suivantes contiennent les $n \times n$ coefficients de $A$, séparés par des espaces. Vous pouvez modifier ce fichier pour essayer d'autres matrices. Le projet contient un exemple de matrice de taille 8.
+La **première ligne** contient la taille `n` de la matrice. Les lignes suivantes contiennent ses `n × n` coefficients, séparés par des espaces. Vous pouvez modifier ce fichier pour essayer d'autres matrices. Le projet contient un exemple de matrice de taille 8.
 
-Voici un exemple de contenu pour une matrice $2 \times 2$ :
+Voici un exemple de contenu pour une matrice 2 × 2 :
 
 ```text
 2
@@ -29,20 +29,20 @@ La matrice choisie doit être inversible pour que son inverse existe. Respectez 
 
 ## Principe de l'algorithme
 
-Le rapport part d'une matrice carrée inversible $A$. Il montre que $A^\mathsf{T}A$ est symétrique définie positive, puis utilise l'identité :
+Le rapport part d'une matrice carrée inversible A. Il montre que AᵀA est symétrique définie positive, puis utilise l'identité :
 
-$$
-A^{-1} = (A^\mathsf{T}A)^{-1}A^\mathsf{T}.
-$$
+```text
+A⁻¹ = (AᵀA)⁻¹Aᵀ
+```
 
-Pour calculer l'inverse de $A^\mathsf{T}A$, la méthode décrite dans le rapport découpe la matrice en blocs, inverse récursivement un bloc et emploie le **complément de Schur** pour construire l'inverse de la matrice entière. La décomposition permet de ramener le problème à des inversions de blocs plus petits et à des multiplications de matrices.
+Pour calculer l'inverse de AᵀA, la méthode décrite dans le rapport découpe la matrice en blocs, inverse récursivement un bloc et emploie le **complément de Schur** pour construire l'inverse de la matrice entière. La décomposition permet de ramener le problème à des inversions de blocs plus petits et à des multiplications de matrices.
 
 ## Complexité
 
-Le rapport établit une récurrence de la forme $C(n) = 2C(n/2) + O(n^3)$ : deux inversions de sous-matrices de taille voisine de $n/2$, auxquelles s'ajoutent les multiplications et opérations matricielles. Il en déduit :
+Le rapport établit la récurrence `C(n) = 2C(n/2) + O(n³)` : deux inversions de sous-matrices de taille voisine de `n/2`, auxquelles s'ajoutent les multiplications et opérations matricielles. Il en déduit :
 
-- **Temps :** $O(n^3)$ avec une multiplication matricielle classique.
-- **Espace :** $O(n^2)$, pour les matrices manipulées pendant le calcul.
+- **Temps :** `O(n³)` avec une multiplication matricielle classique.
+- **Espace :** `O(n²)`, pour les matrices manipulées pendant le calcul.
 
 ## Rapport
 
