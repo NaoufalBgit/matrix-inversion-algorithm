@@ -1,5 +1,51 @@
-Pour compiler : " make ".
-Pour éxecuter : " make run ".
-Vous aurez besoin du fichier " matrice.txt ". Vous veillerez à ce qu'il soit dans le même répertoire que le fichier " inverse_de_matrice.c ".
-C'est à partir de ce fichier que notre programme récupère la taille de la matrice A ainsi que les éléments de la matrice A.
-Vous pourrez modifier le fichier " matrice.txt " à votre guise en sachant que l'on renseigne la taille de la matrice à la première ligne et les éléments de la matrice A à partir de la deuxième ligne en veillant à laisser un espace entre chaque terme de la matrice. (vous trouverez un exemple d'une matrice de taille 8 dans le fichier).
+# Inversion de matrice en C
+
+Projet d'algorithmique consacré à l'inversion d'une matrice carrée réelle inversible, avec une méthode de calcul par blocs et une analyse de sa complexité.
+
+## Compilation et exécution
+
+Placez-vous dans le répertoire du projet, puis exécutez :
+
+```bash
+make
+make run
+```
+
+Le programme a besoin du fichier `matrice.txt`, placé **dans le même répertoire que `inverse_de_matrice.c`**. Il y lit la taille de la matrice $A$, puis ses coefficients.
+
+## Format de `matrice.txt`
+
+La **première ligne** contient la taille $n$ de la matrice. Les lignes suivantes contiennent les $n \times n$ coefficients de $A$, séparés par des espaces. Vous pouvez modifier ce fichier pour essayer d'autres matrices. Le projet contient un exemple de matrice de taille 8.
+
+Voici un exemple de contenu pour une matrice $2 \times 2$ :
+
+```text
+2
+4 7
+2 6
+```
+
+La matrice choisie doit être inversible pour que son inverse existe. Respectez le nombre de coefficients correspondant à la taille indiquée.
+
+## Principe de l'algorithme
+
+Le rapport part d'une matrice carrée inversible $A$. Il montre que $A^\mathsf{T}A$ est symétrique définie positive, puis utilise l'identité :
+
+$$
+A^{-1} = (A^\mathsf{T}A)^{-1}A^\mathsf{T}.
+$$
+
+Pour calculer l'inverse de $A^\mathsf{T}A$, la méthode décrite dans le rapport découpe la matrice en blocs, inverse récursivement un bloc et emploie le **complément de Schur** pour construire l'inverse de la matrice entière. La décomposition permet de ramener le problème à des inversions de blocs plus petits et à des multiplications de matrices.
+
+## Complexité
+
+Le rapport établit une récurrence de la forme $C(n) = 2C(n/2) + O(n^3)$ : deux inversions de sous-matrices de taille voisine de $n/2$, auxquelles s'ajoutent les multiplications et opérations matricielles. Il en déduit :
+
+- **Temps :** $O(n^3)$ avec une multiplication matricielle classique.
+- **Espace :** $O(n^2)$, pour les matrices manipulées pendant le calcul.
+
+## Rapport
+
+Le [rapport d'algorithmique](Devoir%20Algorithmique%20-%20Naoufal%20Benamar%2012212426.pdf) détaille les démonstrations et l'analyse de complexité. Ce lien fonctionne si le PDF est ajouté à la racine du dépôt.
+
+Projet réalisé par **Naoufal Benamar** dans le cadre du cours d'algorithmique, sous l'encadrement de **M. Roupin** (2023–2024).
